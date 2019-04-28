@@ -1,6 +1,8 @@
 "General
-set nocompatible              " required
-filetype off                  " required
+" required:
+set nocompatible
+" required:
+" filetype off
 set autoindent
 set hlsearch
 set nu
@@ -55,7 +57,6 @@ let g:netrw_winsize = 20
 "  autocmd VimEnter * :Vexplore
 "augroup END
 
-filetype plugin indent on
 " show existing tab with 4 spaces width
 set tabstop=4
 " when indenting with '>', use 4 spaces width
@@ -85,7 +86,9 @@ set conceallevel=1
 let g:tex_conceal='abdmg'
 
 " Config UltiSnips
-set runtimepath+=~/.vim/my-snippets/
-let g:UltiSnipsExpandTrigger = '<leader><tab>'
-let g:UltiSnipsJumpForwardTrigger = '<leader><tab>'
-let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+let g:UltiSnipsSnippetDirectories = ['/home/ben/.vim/UltiSnips', '/home/ben/.vim/my-snippets/']
+let g:UltiSnipsExpandTrigger = '<C-x>'
+let g:UltiSnipsJumpForwardTrigger = '<C-b>'
+let g:UltiSnipsJumpBackwardTrigger = '<C-z>'
+
+filetype plugin indent on
