@@ -1,12 +1,9 @@
 [url "https://aur.archlinux.org/"]
-    insteadOf = aur:
+	insteadOf = aur:
 [url "https://github.com/bedumont/"]
-    insteadOf = bed:
-[url "https://github.com/"]
-    insteadOf = gh:
+	insteadOf = bed:
 [user]
-	email = bedumont@ulb.ac.be
+	email = dumont.benjamin@live.fr
 	name = Ben Dum
-	signingkey = 2B482641E3687519
 [credential]
 	helper = cache
