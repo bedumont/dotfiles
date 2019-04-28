@@ -75,3 +75,11 @@ let &t_SI = "\<esc>[5 q"
 let &t_SR = "\<esc>[4 q"
 let &t_EI = "\<esc>[2 q"
 autocmd VimLeave * let &t_me="\<esc>[4 q"
+
+
+" Config vimtex
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'

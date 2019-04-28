@@ -2,6 +2,8 @@
 	insteadOf = aur:
 [url "https://github.com/bedumont/"]
 	insteadOf = bed:
+[url "https://github.com/"]
+	insteadOf = gh:
 [user]
 	email = dumont.benjamin@live.fr
 	name = Ben Dum

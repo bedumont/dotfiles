@@ -22,3 +22,9 @@
 [submodule ".vim/plugin/vim-autopep8"]
 	path = .vim/plugin/vim-autopep8
 	url = https://github.com/tell-k/vim-autopep8.git
+[submodule ".vim/pack/my-plugins/start/vimtex"]
+	path = .vim/pack/my-plugins/start/vimtex
+	url = https://github.com/lervag/vimtex.git
+[submodule ".local/share/qutebrowser/.vim/pack/my-plugins/start/ultisnips"]
+	path = .local/share/qutebrowser/.vim/pack/my-plugins/start/ultisnips
+	url = https://github.com/SirVer/ultisnips.git
