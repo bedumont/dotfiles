@@ -25,3 +25,6 @@
 [submodule ".vim/pack/my-plugins/start/vimtex"]
 	path = .vim/pack/my-plugins/start/vimtex
 	url = https://github.com/lervag/vimtex.git
+[submodule ".vim/pack/my-plugins/start/ultisnips"]
+	path = .vim/pack/my-plugins/start/ultisnips
+	url = https://github.com/SirVer/ultisnips.git
