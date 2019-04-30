@@ -17,6 +17,15 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" Autoclose braces
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap {<CR> {<CR>}<ESC>O
+inoremap {;<CR> {<CR>};<ESC>O
+
 " Enable folding
 set foldmethod=indent
 set foldlevel=99
@@ -25,6 +34,7 @@ set foldlevel=99
 nnoremap <space> za
 
 let python_highlight_all=1
+filetype plugin indent on
 syntax on
 
 "python with virtualenv support
@@ -91,4 +101,3 @@ let g:UltiSnipsExpandTrigger = '<C-x>'
 let g:UltiSnipsJumpForwardTrigger = '<C-b>'
 let g:UltiSnipsJumpBackwardTrigger = '<C-z>'
 
-filetype plugin indent on

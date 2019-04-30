@@ -9,6 +9,13 @@ bindkey -v
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/ben/.zshrc'
 
+bindkey "^B" history-beginning-search-backward
+bindkey '^[[Z' reverse-menu-complete
+bindkey '^[[3~' delete-char
+bindkey -a '^[[3~' delete-char
+
+export KEYTIMEOUT=1
+
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
@@ -77,7 +84,11 @@ export ZSH="/home/ben/.oh-my-zsh"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git
+         sudo
+         vi-mode
+         )
+
 
 source $ZSH/oh-my-zsh.sh
 
@@ -92,7 +103,7 @@ export LANG=en_US.UTF-8
 	if [[ -n $SSH_CONNECTION ]]; then
 		export EDITOR='vim'
 	else
-		export EDITOR='mvim'
+		export EDITOR='vim'
 	fi
 
 # Compilation flags
