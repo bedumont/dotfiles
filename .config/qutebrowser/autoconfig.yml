@@ -31,7 +31,7 @@ settings:
         M: bookmark-add
         Z: spawn --userscript qute-pass --dmenu-invocation dmenu --password-only
         h: scroll left
-        l: scroll left
+        l: scroll right
         m: quickmark-save
         z: spawn --userscript qute-pass --dmenu-invocation dmenu
         ù: spawn mpv {url}
