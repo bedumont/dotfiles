@@ -91,7 +91,7 @@ settings:
     - \b(>>|»)\b
     - \bcontinue\b
   input.spatial_navigation:
-    global: true
+    global: false
   scrolling.bar:
     global: always
   scrolling.smooth:

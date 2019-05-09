@@ -1,6 +1,8 @@
 "General
-set nocompatible              " required
-filetype off                  " required
+" required:
+set nocompatible
+" required:
+" filetype off
 set autoindent
 set hlsearch
 set nu
@@ -15,6 +17,15 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" Autoclose braces
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap {<CR> {<CR>}<ESC>O
+inoremap {;<CR> {<CR>};<ESC>O
+
 " Enable folding
 set foldmethod=indent
 set foldlevel=99
@@ -23,6 +34,7 @@ set foldlevel=99
 nnoremap <space> za
 
 let python_highlight_all=1
+filetype plugin indent on
 syntax on
 
 "python with virtualenv support
@@ -55,7 +67,6 @@ let g:netrw_winsize = 20
 "  autocmd VimEnter * :Vexplore
 "augroup END
 
-filetype plugin indent on
 " show existing tab with 4 spaces width
 set tabstop=4
 " when indenting with '>', use 4 spaces width
@@ -75,3 +86,18 @@ let &t_SI = "\<esc>[5 q"
 let &t_SR = "\<esc>[4 q"
 let &t_EI = "\<esc>[2 q"
 autocmd VimLeave * let &t_me="\<esc>[4 q"
+
+
+" Config vimtex
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
+
+" Config UltiSnips
+let g:UltiSnipsSnippetDirectories = ['/home/ben/.vim/UltiSnips', '/home/ben/.vim/my-snippets/']
+let g:UltiSnipsExpandTrigger = '<C-x>'
+let g:UltiSnipsJumpForwardTrigger = '<C-b>'
+let g:UltiSnipsJumpBackwardTrigger = '<C-z>'
+
