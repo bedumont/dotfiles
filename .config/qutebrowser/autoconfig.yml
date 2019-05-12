@@ -6,7 +6,9 @@ settings:
   aliases:
     global:
       Zotero: hint links userscript zotero
+      aumpv: spawn /home/ben/scripts/umpv.py --append https://gist.github.com/Ape/d0c48b3f7ec9c8efaecf48eaa1e75d0d
       q: quit
+      umpv: spawn /home/ben/scripts/umpv.py https://gist.github.com/Ape/d0c48b3f7ec9c8efaecf48eaa1e75d0d
       w: session-save
       wq: quit --save
       zotero: spawn --userscript zotero
@@ -21,6 +23,7 @@ settings:
         ;m: hint all spawn -v umpv {hint-url} ;; message-info "Select video to load
           with umpv."
         <Ctrl+Shift+y>: hint links spawn --detach mpv --force-window yes {hint-url}
+        <Ctrl+e>: open-editor
         <F12>: config-cycle input.spatial_navigation
         Alt+p: :spawn --userscript qute-pass
         F12: :spawn --userscript qute-pass
@@ -114,6 +117,8 @@ settings:
     global: top
   tabs.select_on_remove:
     global: last-used
+  tabs.tabs_are_windows:
+    global: false
   url.default_page:
     global: https://www.startpage.com/do/mypage.pl?prf=74f22d9afe7fb5ea1e42c60f65283521
   url.open_base_url:

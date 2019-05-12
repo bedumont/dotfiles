@@ -23,6 +23,8 @@ compinit
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+PATH=$HOME/scripts:$PATH
+
 # Path to your oh-my-zsh installation.
 export ZSH="/home/ben/.oh-my-zsh"
 
@@ -85,8 +87,8 @@ export ZSH="/home/ben/.oh-my-zsh"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git
-         vi-mode
          sudo
+         vi-mode
          )
 
 

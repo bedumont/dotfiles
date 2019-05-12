@@ -5,7 +5,7 @@ set nocompatible
 " filetype off
 set autoindent
 set hlsearch
-set nu
+set nu rnu
 let mapleader = ','
 
 "split navigations
@@ -32,6 +32,12 @@ set foldlevel=99
 
 " Enable folding with the spacebar
 nnoremap <space> za
+
+" Toggle spell check
+map <leader>o :setlocal spell! spelllang=fr,en_gb<CR>
+
+" Disables automatic commenting on newline
+autocmd Filetype * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 let python_highlight_all=1
 filetype plugin indent on
@@ -101,3 +107,8 @@ let g:UltiSnipsExpandTrigger = '<C-x>'
 let g:UltiSnipsJumpForwardTrigger = '<C-b>'
 let g:UltiSnipsJumpBackwardTrigger = '<C-z>'
 
+" Delete tex build files upon closing tex file
+autocmd VimLeave *.tex !texclear %
+
+" Automatically delete all trailing whitespace on save
+autocmd BufWritePre * %s/\s\+$//e
