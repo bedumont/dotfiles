@@ -5,7 +5,7 @@ set nocompatible
 " filetype off
 set autoindent
 set hlsearch
-set nu
+set rnu nu
 let mapleader = ','
 
 "split navigations
