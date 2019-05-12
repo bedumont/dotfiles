@@ -28,3 +28,6 @@
 [submodule ".vim/pack/my-plugins/start/ultisnips"]
 	path = .vim/pack/my-plugins/start/ultisnips
 	url = https://github.com/SirVer/ultisnips.git
+[submodule ".vim/pack/my-plugins/start/goyo"]
+	path = .vim/pack/my-plugins/start/goyo
+	url = git@github.com:junegunn/goyo.vim.git
