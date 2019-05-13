@@ -4,9 +4,6 @@
 [submodule ".vim/pack/my-plugins/start/SimpylFold"]
 	path = .vim/pack/my-plugins/start/SimpylFold
 	url = https://github.com/tmhedberg/SimpylFold.git
-[submodule ".vim/pack/my-plugins/start/YouCompleteMe"]
-	path = .vim/pack/my-plugins/start/YouCompleteMe
-	url = https://github.com/Valloric/Youcompleteme.git
 [submodule ".vim/pack/my-plugins/start/python-syntax"]
 	path = .vim/pack/my-plugins/start/python-syntax
 	url = https://github.com/vim-python/python-syntax.git
