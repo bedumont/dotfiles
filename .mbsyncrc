@@ -1,0 +1,52 @@
+# MAIL ULB #
+
+IMAPAccount ULB
+Host imap.ULB.ac.be
+Port 993
+User bedumont
+PassCmd "pass Email/ulb.ac.be/bedumont"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore ULB-remote
+Account ULB
+
+MaildirStore ULB-local
+Path ~/Mail/ULB/
+Inbox ~/Mail/ULB/INBOX
+Subfolders Verbatim
+
+Channel ULB
+Master :ULB-remote:
+Slave :ULB-local:
+Create Both
+Expunge Both
+Patterns *
+SyncState *
+
+
+# MAIL ULB #
+
+IMAPAccount Outlook
+Host Outlook.office365.com
+Port 993
+User dumont.benjamin@live.fr
+PassCmd "pass Email/live.com/dumont.benjamin@live.fr"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore Outlook-remote
+Account Outlook
+
+MaildirStore Outlook-local
+Path ~/Mail/Outlook/
+Inbox ~/Mail/Outlook/INBOX
+Subfolders Verbatim
+
+Channel Outlook
+Master :Outlook-remote:
+Slave :Outlook-local:
+Create Both
+Expunge Both
+Patterns *
+SyncState *
