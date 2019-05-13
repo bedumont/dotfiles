@@ -1,0 +1,69 @@
+# Paths
+set folder = "~/Mail"
+set header_cache = ~/.cache/mutt_headers
+set message_cachedir = ~/.cache/mutt_bodies
+set certificate_file = /etc/ssl/certs/ca-certficates.crt
+
+
+# Source color file
+source color.muttrc
+
+# Basic options
+set mbox_type = Maildir
+set editor = 'vim'
+
+# Formatting
+# status bar, date format, finding stuff etc.
+set status_chars = " *%A"
+set status_format = "[ Folder: %f ] [%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]%>─%?p?( %p postponed )?"
+set date_format = "%d.%m.%Y %H:%M"
+set index_format = "[%Z] %?X?A&-? %D  %-20.20F  %s"
+set sort = threads
+set sort_aux = reverse-last-date-received
+set uncollapse_jump
+set sort_re
+
+# sidebar patch config
+set sidebar_visible
+set sidebar_short_path
+set sidebar_folder_indent
+set sidebar_width = 25
+set sidebar_divider_char = ' | '
+set sidebar_indent_string = '  ''
+set sidebar_format = "%B %* [%?N?%N / ?%S]"
+
+# Mailboxes to show in the sidebar.
+mailboxes =ALL-INBOXES
+mailboxes =ULB/INBOX =outlook/INBOX
+mailboxes ="==================="
+mailboxes =ULB
+mailboxes =ULB/Archives =ULB/Sent =ULB/Drafts =ULB/trash
+mailboxes =Outlook
+mailboxes =Outlook/Archives =Outlook/Dent =Outlook/Drafts =Outlook/Trash
+
+# Keybinding
+# some sane vim-like keybindings
+bind index,pager k previous-entry
+bind index,pager j next-entry
+bind index,pager g noop
+bind index,pager \Cu half-up
+bind index,pager \Cd half-down
+bind pager gg top
+bind index gg first-entry
+bind pager G bottom
+bind index G last-entry
+
+# Sidebar Navigation
+bind index,pager <down> sidebar-next
+bind index,pager <up> sidebar-prev
+bind index,pager <right> sidebar-open
+
+# Accounts settings
+# by default use ulb
+set realname = "Benjamin Dumont"
+set spoolfile = "+ULB/INBOX"
+source ~/.config/mutt/accounts/ulb.muttrc
+
+# when changing into other mailboxes, use different adresses etc.
+folder-hook ULB/* source ~/.config/mutt/accounts/accounts/ulb.muttrc
+folder-hook Outlook/* source ~/.config/mutt/accounts/accounts/outlook.muttrc
