@@ -4,10 +4,10 @@ set sendmail = "/usr/bin/msmtp -a outlook"
 
 # Set folders
 
-set spoolfile = "+Outlook/INBOX"
+set spoolfile = "+Outlook/Inbox"
 set record = "+Outlook/Sent"
 set trash = "+Outlook/Trash"
 set postponed = "+Outlook/Drafts"
 set mbox = "+Outlook/Archives"
 
-color status blue default
+color status green default

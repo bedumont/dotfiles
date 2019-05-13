@@ -11,6 +11,10 @@ source color.muttrc
 # Basic options
 set mbox_type = Maildir
 set editor = 'vim'
+set timeout = 15
+set mail_check = 90
+set delete
+set quit
 
 # Formatting
 # status bar, date format, finding stuff etc.
@@ -23,6 +27,14 @@ set sort_aux = reverse-last-date-received
 set uncollapse_jump
 set sort_re
 
+# Pager View Options
+set pager_index_lines = 10
+set pager_context = 3
+set pager_stop
+set menu_scroll
+set tilde
+unset markers
+
 # sidebar patch config
 set sidebar_visible
 set sidebar_short_path
@@ -33,13 +45,11 @@ set sidebar_indent_string = '  ''
 set sidebar_format = "%B %* [%?N?%N / ?%S]"
 
 # Mailboxes to show in the sidebar.
-mailboxes =ALL-INBOXES
-mailboxes =ULB/INBOX =outlook/INBOX
-mailboxes ="==================="
 mailboxes =ULB
-mailboxes =ULB/Archives =ULB/Sent =ULB/Drafts =ULB/trash
+mailboxes =ULB/INBOX =ULB/Archives =ULB/Sent =ULB/Drafts =ULB/Trash
+mailboxes ="==================="
 mailboxes =Outlook
-mailboxes =Outlook/Archives =Outlook/Dent =Outlook/Drafts =Outlook/Trash
+mailboxes =Outlook/Inbox =Outlook/Archives =Outlook/Sent =Outlook/Drafts =Outlook/Trash
 
 # Keybinding
 # some sane vim-like keybindings
@@ -54,9 +64,9 @@ bind pager G bottom
 bind index G last-entry
 
 # Sidebar Navigation
-bind index,pager <down> sidebar-next
-bind index,pager <up> sidebar-prev
-bind index,pager <right> sidebar-open
+bind index,pager J sidebar-next
+bind index,pager K sidebar-prev
+bind index,pager L sidebar-open
 
 # Accounts settings
 # by default use ulb
@@ -65,5 +75,5 @@ set spoolfile = "+ULB/INBOX"
 source ~/.config/mutt/accounts/ulb.muttrc
 
 # when changing into other mailboxes, use different adresses etc.
-folder-hook ULB/* source ~/.config/mutt/accounts/accounts/ulb.muttrc
-folder-hook Outlook/* source ~/.config/mutt/accounts/accounts/outlook.muttrc
+folder-hook ULB/* source ~/.config/mutt/accounts/ulb.muttrc
+folder-hook Outlook/* source ~/.config/mutt/accounts/outlook.muttrc
