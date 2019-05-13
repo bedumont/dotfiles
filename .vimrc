@@ -19,7 +19,6 @@ nnoremap <C-H> <C-W><C-H>
 
 " Autoclose braces
 inoremap " ""<left>
-inoremap ' ''<left>
 inoremap ( ()<left>
 inoremap [ []<left>
 inoremap { {}<left>
@@ -100,4 +99,3 @@ let g:UltiSnipsSnippetDirectories = ['/home/ben/.vim/UltiSnips', '/home/ben/.vim
 let g:UltiSnipsExpandTrigger = '<C-x>'
 let g:UltiSnipsJumpForwardTrigger = '<C-b>'
 let g:UltiSnipsJumpBackwardTrigger = '<C-z>'
-

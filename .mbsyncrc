@@ -40,7 +40,7 @@ Account Outlook
 
 MaildirStore Outlook-local
 Path ~/Mail/Outlook/
-Inbox ~/Mail/Outlook/INBOX
+Inbox ~/Mail/Outlook/Inbox
 Subfolders Verbatim
 
 Channel Outlook
