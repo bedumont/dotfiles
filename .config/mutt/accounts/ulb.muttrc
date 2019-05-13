@@ -1,0 +1,13 @@
+# vim: filetype=neomuttrc
+set from = "bedumont@ulb.ac.be"
+set sendmail = "/usr/bin/msmtp -a ULB"
+
+# Set folders
+
+set spoolfile = "+ULB/INBOX"
+set record = "+ULB/Sent"
+set trash = "+ULB/Trash"
+set postponed = "+ULB/Drafts"
+set mbox = "+ULB/Archives"
+
+color status cyan default
