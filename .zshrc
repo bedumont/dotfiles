@@ -89,6 +89,7 @@ export ZSH="/home/ben/.oh-my-zsh"
 plugins=(git
          sudo
          vi-mode
+         z
          )
 
 
