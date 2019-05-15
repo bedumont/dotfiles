@@ -103,7 +103,8 @@ alias zshconfig="vim ~/.zshrc"
 alias pipinstall="pip install --user"
 alias sourcez="source ~/.zshrc"
 alias MA2="cd ~/ULB/MA2-Polytech"
-alias mfe="cd ~/ULB/MA2-Polytech/MFE; source ~/ULB/MA2-Polytech/MFE/venv/bin/activate"
+alias mfe="cd ~/ULB/MA2-Polytech/MFE"
+alias MFE="cd ~/ULB/MA2-Polytech/MFE; source ~/ULB/MA2-Polytech/MFE/venv/bin/activate"
 alias config="/usr/bin/git --git-dir=$HOME/.myconfig/ --work-tree=$HOME"
 
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
