@@ -68,6 +68,9 @@ bind index,pager J sidebar-next
 bind index,pager K sidebar-prev
 bind index,pager L sidebar-open
 
+# Faster folder switch
+set sleep_time = 0
+
 # Accounts settings
 # by default use ulb
 set realname = "Benjamin Dumont"
