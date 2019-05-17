@@ -1,0 +1,110 @@
+# i3blocks config file
+#
+# Please see man i3blocks for a complete reference!
+# The man page is also hosted at http://vivien.github.io/i3blocks
+#
+# List of valid properties:
+#
+# align
+# color
+# command
+# full_text
+# instance
+# interval
+# label
+# min_width
+# name
+# separator
+# separator_block_width
+# short_text
+# signal
+# urgent
+
+#Global properties
+separator_block_width=18
+command=~/scripts/statusbar/$BLOCK_NAME
+markup=pango
+
+#Blocks
+#[clickme]
+#full_text=Click me!
+#command=echo button=$BLOCK_BUTTON x=$BLOCK_X y=$BLOCK_Y
+#min_width=button=1 x=1366 y=768
+#align=left
+
+# Spotify icon \uF1BC
+#[spotify]
+#label=
+#command=~/scripts/spotify.py
+#color=#2299ff
+#interval=5
+
+#[mediaplayer]
+#command=~/scripts/i3/cmusStatus.sh
+#interval=5
+#signal=1
+#color=#2299ff
+
+[volume]
+label=vol:
+instance=Master
+#instance=PCM
+command=~/scripts/statusbar/volume
+interval=5
+signal=1
+
+[disk-root]
+label=/root:
+instance=/
+command=/usr/lib64/i3blocks/disk
+interval=30
+separator=false
+
+[disk-home]
+label=/home:
+instance=/home
+command=/usr/lib64/i3blocks/disk
+interval=30
+
+[wireless]
+label=w:
+instance=wlp3s0
+#instance=wlp0s29u1u2
+command=~/scripts/statusbar/ssid
+color=#BF616A
+interval=5
+
+[ethernet]
+label=e:
+instance=eth0
+#instance=enp0s25
+command=/usr/lib64/i3blocks/network
+color=#BF616A
+interval=10
+
+[battery]
+command=~/scripts/statusbar/battery BAT0
+interval=5
+
+[mailbox]
+label=mail:
+command=~/scripts/statusbar/mailbox
+interval=180
+signal=12
+
+#[cpu]
+#label=CPU
+#command=/usr/libexec/i3blocks/cpu_usage
+#interval=10
+#min_width=CPU: 100.00%
+#separator=false
+
+#[load]
+#command=/usr/libexec/i3blocks/load_average
+#interval=10
+
+[time]
+label=
+command=date '+%d-%m-%Y %H:%M:%S'
+#command=~/scripts/i3/i3blocks-master/blocks/datetime
+interval=1
