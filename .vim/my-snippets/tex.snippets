@@ -19,22 +19,90 @@ $1
 .\] $0
 endsnippet
 
+snippet bq "Equation" wA
+\begin{equation}
+	$1
+.\end{equation}
+
+$0
+endsnippet
+
 snippet dd "D droit"
 \textrm{d}
 endsnippet
 
-snippet bfig "fig envi" wA
+snippet bfig "fig envi" bA
 \begin{figure}
-	\input{$0}
-	\caption{$1}
-	\label{fig:$2}
+	\centering
+	\includegraphics[$1]{$2}
+	\caption{$3}
+	\label{fig:$4}
 \end{figure}
+
+$0
 endsnippet
 
-snippet ns "New section"
-\section*{$0}
+snippet ns "New section" bA
+\section*{$1}
+$0
+endsnippet
+
+snippet nsub "New subsection" bA
+\subsection*{$1}
+$0
+endsnippet
+
+snippet nsus "New subsubsection" bA
+\subsubsection*{$1}
+$0
 endsnippet
 
 snippet wip "Work in progress"
-\textbf{$1}
+\textbf{$1}$0
+endsnippet
+
+global !p
+def create_row_placeholders(snip):
+    # retrieving singlee line from current string and treat it like tabstops
+    # count
+    placeholders_amount = int(snip.buffer[snip.line].strip())
+
+    # erase current line
+    snip.buffer[snip.line] = ''
+
+    # create anonymous snippet with expected content and number of tabstops
+    anon_snippet_body = ' & '.join(['$' + str(i+1)
+                                    for i in range(placeholders_amount)])
+
+    # expand anonymous snippet
+    snip.expand_anon(anon_snippet_body)
+endglobal
+
+post_jump "create_row_placeholders(snip)"
+snippet "tr(\d+)" "latex table row variable" br
+`!p snip.rv = match.group(1)`
+endsnippet
+
+snippet ct "CT" wA
+\ac{ct}$0
+endsnippet
+
+snippet mri "MRI" wA
+\ac{mri}$0
+endsnippet
+
+snippet pet "PET" wA
+\ac{pet}$0
+endsnippet
+
+snippet nn "NN" wA
+\ac{nn}$0
+endsnippet
+
+snippet dnn "DNN" wA
+\ac{dnn}$0
+endsnippet
+
+snippet rofi "ROI" wA
+\ac{roi}$0
 endsnippet

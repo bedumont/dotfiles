@@ -47,9 +47,6 @@ if 'VIRTUAL_ENV' in os.environ:
 EOF
 set encoding=utf-8
 
-" Automatically save the file notes when idle
-autocmd CursorHold .notes :write
-
 " Apply macros with Q
 nnoremap Q @q
 vnoremap Q :norm @q<cr>
@@ -86,6 +83,18 @@ let &t_SR = "\<esc>[4 q"
 let &t_EI = "\<esc>[2 q"
 autocmd VimLeave * let &t_me="\<esc>[4 q"
 
+" Automatically save the file notes when idle
+autocmd CursorHold .notes.md :write
+
+" Enable Goyo by default for mutt writing"
+        autocmd BufRead,BufNewFile /tmp/neomutt* let g:goyo_width=80
+        autocmd BufRead,BufNewFile /tmp/neomutt* :Goyo
+ 
+" Run xrdb whenever Xdefaults of Xresources are updated
+        autocmd BufWritePost ~/.Xresources,~/.Xdefaults !xrdb %
+
+" Recompile suckless programs automatically
+        autocmd BufWritePost config.h,config.def.h !sudo make install
 
 " Config vimtex
 let g:tex_flavor='latex'

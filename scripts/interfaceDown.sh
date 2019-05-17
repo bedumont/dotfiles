@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ip link set wlp3s0 down

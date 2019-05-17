@@ -1,7 +1,10 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$HOME/.local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$HOME/.local/bin:$HOME/scripts:$PATH
 #export JUPYTERLAB_DIR=$HOME/.local/share/jupyter/lab
 export LESS=-R  # to allow ANSI colors
+export TERMINAL=st
+export FILE=vifm
+export EDITOR=vim
 
 # Path to your oh-my-zsh installation.
 ZSH=/usr/share/oh-my-zsh/
@@ -106,6 +109,7 @@ alias MA2="cd ~/ULB/MA2-Polytech"
 alias mfe="cd ~/ULB/MA2-Polytech/MFE"
 alias MFE="cd ~/ULB/MA2-Polytech/MFE; source ~/ULB/MA2-Polytech/MFE/venv/bin/activate"
 alias config="/usr/bin/git --git-dir=$HOME/.myconfig/ --work-tree=$HOME"
+alias mutt='cd ~/attachments && mutt'
 
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
