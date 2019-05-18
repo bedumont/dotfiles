@@ -5,6 +5,8 @@ export LESS=-R  # to allow ANSI colors
 export TERMINAL=st
 export FILE=vifm
 export EDITOR=vim
+export VISUAL=vim
+export RANGER_LOAD_DEFAULT_RC=false
 
 # Path to your oh-my-zsh installation.
 ZSH=/usr/share/oh-my-zsh/
@@ -101,7 +103,8 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias zshconfig="vim ~/.zshrc"
+alias cfz="vim ~/.zshrc"
+alias cfi="vim ~/.config/i3/config"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias pipinstall="pip install --user"
 alias sourcez="source ~/.zshrc"
