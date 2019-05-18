@@ -1,13 +1,13 @@
 # vim: filetype=neomuttrc
 set from = "dumont.benjamin@live.fr"
-set sendmail = "/usr/bin/msmtp -a outlook"
+set sendmail = "/usr/bin/msmtp -a Outlook"
 
 # Set folders
 
 set spoolfile = "+Outlook/Inbox"
 set record = "+Outlook/Sent"
-set trash = "+Outlook/Trash"
+set trash = "+Outlook/Deleted"
 set postponed = "+Outlook/Drafts"
-set mbox = "+Outlook/Archives"
+set mbox = "+Outlook/Archivage"
 
 color status green default

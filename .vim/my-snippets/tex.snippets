@@ -42,17 +42,17 @@ snippet bfig "fig envi" bA
 $0
 endsnippet
 
-snippet ns "New section" bA
+snippet ns "New section" b
 \section*{$1}
 $0
 endsnippet
 
-snippet nsub "New subsection" bA
+snippet nsub "New subsection" b
 \subsection*{$1}
 $0
 endsnippet
 
-snippet nsus "New subsubsection" bA
+snippet nsubs "New subsubsection" b
 \subsubsection*{$1}
 $0
 endsnippet
@@ -70,7 +70,7 @@ def create_row_placeholders(snip):
     # erase current line
     snip.buffer[snip.line] = ''
 
-    # create anonymous snippet with expected content and number of tabstops
+    # create anonymous snippet with expected content and number of tab stops
     anon_snippet_body = ' & '.join(['$' + str(i+1)
                                     for i in range(placeholders_amount)])
 
@@ -105,4 +105,20 @@ endsnippet
 
 snippet rofi "ROI" wA
 \ac{roi}$0
+endsnippet
+
+snippet aC "AC" wA
+\ac{ac}$0
+endsnippet
+
+snippet ute "UTE" wA
+\ac{ute}$0
+endsnippet
+
+snippet zte "ZTE" wA
+\ac{zte}$0
+endsnippet
+
+snippet ml "ML" wA
+\ac{ml}$0
 endsnippet

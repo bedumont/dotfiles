@@ -10,7 +10,7 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 #
 
-set $term --no-startup-id st
+set $term --no-startup-id $TERMINAL
 
 set_from_resource $base03   i3wm.color8     #002b36
 set_from_resource $base02   i3wm.color0     #073642
@@ -124,21 +124,15 @@ bindsym $mod+o [instance="^((?!dropdown_*).)*$"] scratchpad show
 
 # dropdown
 # settings for dropdown
-for_window [instance="dropdown_term"] floating enable
-for_window [instance="dropdown_term"] resize set 625 400
-for_window [instance="dropdown_term"] move scratchpad
-for_window [instance="dropdown_term"] border pixel 2
-#
-# calcurse
-# settings for calcurse 
-for_window [instance="dropdown_calcurse"] floating enable
-for_window [instance="dropown_calcurse"] resize set 625 400
-for_window [instance="dropdown_calcurse"] move scratchpad
-for_window [instance="dropown_calcurse"] border pixel 2
+for_window [instance="dropdown_*"] floating enable
+for_window [instance="dropdown_*"] resize set 625 400
+for_window [instance="dropdown_*"] move scratchpad
+for_window [instance="dropdown_*"] border pixel 2
+for_window [instance="dropdown_*"] move position center
 
 # start scratchpad
-exec $term -name dropdown_calcurse -e calcurse
-exec $term -name dropdown_term
+exec_always $term -n dropdown_calcurse -e calcurse
+exec_always $term -n dropdown_term
 # keybinding for sracthpad
 bindsym F2 [instance="dropdown_calcurse"] scratchpad show
 bindsym F3 [instance="dropdown_term"] scratchpad show
@@ -162,7 +156,7 @@ set $4 4
 set $5 5
 set $6 6
 set $7 7: signal
-set $8 8: mail
+set $8 8
 set $9 9: music
 set $10 10
 
@@ -280,7 +274,7 @@ workspace_auto_back_and_forth yes
 exec --no-startup-id unclutter -grab
 assign [class="qutebrowser"] $1
 assign [class="Signal"] $7
-exec --no-startup-id i3-msg 'workspace 2: work; exec zathura; workspace 8: mail; exec $term -e neomutt; workspace 7: signal; exec --no-startup-id signal-desktop; workspace 9: music; exec --no-startup-id spotify; workspace 1: web; exec qutebrowser'
+exec --no-startup-id i3-msg 'workspace 2: work; exec zathura; workspace 7: signal; exec --no-startup-id signal-desktop; workspace 9: music; exec --no-startup-id spotify; workspace 1: web; exec qutebrowser'
 for_window [class="Spotify"] move to workspace $9
 #exec --no-startup-id redshift-gtk
 #exec --no-startup-id udiskie --tray --use-udisks2

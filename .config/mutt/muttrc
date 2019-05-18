@@ -49,7 +49,7 @@ mailboxes =ULB
 mailboxes =ULB/INBOX =ULB/Archives =ULB/Sent =ULB/Drafts =ULB/Trash
 mailboxes ="==================="
 mailboxes =Outlook
-mailboxes =Outlook/Inbox =Outlook/Archives =Outlook/Sent =Outlook/Drafts =Outlook/Trash
+mailboxes =Outlook/Inbox =Outlook/Archivage =Outlook/Sent =Outlook/Drafts =Outlook/Deleted
 
 # Keybinding
 # some sane vim-like keybindings
