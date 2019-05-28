@@ -1,11 +1,11 @@
-snippet beg "begin{} / end{}" bA
+snippet beg "begin{} / end{}" b
 \begin{$1}
 	$0
 \end{$1}
 endsnippet
 
-snippet mk "Math" wA
-$${1}$`!p
+snippet mk "Math" w
+\(${1}\)`!p
 if t[2] and t[2][0] not in [',', '.', '?', '-', ' ']:
     snip.rv = ' '
 else:
@@ -13,13 +13,13 @@ else:
 `$2
 endsnippet
 
-snippet dm "Math" wA
+snippet dm "Math" w
 \[
 $1
 .\] $0
 endsnippet
 
-snippet bq "Equation" wA
+snippet bq "Equation" w
 \begin{equation}
 	$1
 .\end{equation}
@@ -31,7 +31,7 @@ snippet dd "D droit"
 \textrm{d}
 endsnippet
 
-snippet bfig "fig envi" bA
+snippet bfig "fig envi" b
 \begin{figure}
 	\centering
 	\includegraphics[$1]{$2}
@@ -61,6 +61,10 @@ snippet wip "Work in progress"
 \textbf{$1}$0
 endsnippet
 
+snippet rfig "Reference fig" i
+~\ref{$1}$0
+endsnippet
+
 global !p
 def create_row_placeholders(snip):
     # retrieving singlee line from current string and treat it like tabstops
@@ -83,42 +87,42 @@ snippet "tr(\d+)" "latex table row variable" br
 `!p snip.rv = match.group(1)`
 endsnippet
 
-snippet ct "CT" wA
+snippet ct "CT" w
 \ac{ct}$0
 endsnippet
 
-snippet mri "MRI" wA
+snippet mri "MRI" w
 \ac{mri}$0
 endsnippet
 
-snippet pet "PET" wA
+snippet pet "PET" w
 \ac{pet}$0
 endsnippet
 
-snippet nn "NN" wA
+snippet nn "NN" w
 \ac{nn}$0
 endsnippet
 
-snippet dnn "DNN" wA
+snippet dnn "DNN" w
 \ac{dnn}$0
 endsnippet
 
-snippet rofi "ROI" wA
+snippet rofi "ROI" w
 \ac{roi}$0
 endsnippet
 
-snippet aC "AC" wA
+snippet aC "AC" w
 \ac{ac}$0
 endsnippet
 
-snippet ute "UTE" wA
+snippet ute "UTE" w
 \ac{ute}$0
 endsnippet
 
-snippet zte "ZTE" wA
+snippet zte "ZTE" w
 \ac{zte}$0
 endsnippet
 
-snippet ml "ML" wA
+snippet ml "ML" w
 \ac{ml}$0
 endsnippet
