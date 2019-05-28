@@ -11,6 +11,7 @@ export RANGER_LOAD_DEFAULT_RC=false
 # Path to your oh-my-zsh installation.
 ZSH=/usr/share/oh-my-zsh/
 
+
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
@@ -113,6 +114,8 @@ alias mfe="cd ~/ULB/MA2-Polytech/MFE"
 alias MFE="cd ~/ULB/MA2-Polytech/MFE; source ~/ULB/MA2-Polytech/MFE/venv/bin/activate"
 alias config="/usr/bin/git --git-dir=$HOME/.myconfig/ --work-tree=$HOME"
 alias mutt='cd ~/attachments && mutt'
+alias suckclean="make clean && rm  -f config.h && git reset --hard origin/master"
+
 
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
@@ -120,3 +123,4 @@ if [[ ! -d $ZSH_CACHE_DIR ]]; then
 fi
 
 source $ZSH/oh-my-zsh.sh
+bindkey '^[[Z' reverse-menu-complete
