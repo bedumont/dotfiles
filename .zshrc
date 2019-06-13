@@ -115,6 +115,7 @@ alias MFE="cd ~/ULB/MA2-Polytech/MFE; source ~/ULB/MA2-Polytech/MFE/venv/bin/act
 alias config="/usr/bin/git --git-dir=$HOME/.myconfig/ --work-tree=$HOME"
 alias mutt='cd ~/attachments && mutt'
 alias suckclean="make clean && rm  -f config.h && git reset --hard origin/master"
+alias fixwifi="sudo ip link set wlp3s0 down"
 
 
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh

@@ -83,6 +83,7 @@ def create_row_placeholders(snip):
 endglobal
 
 post_jump "create_row_placeholders(snip)"
+
 snippet "tr(\d+)" "latex table row variable" br
 `!p snip.rv = match.group(1)`
 endsnippet
