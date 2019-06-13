@@ -128,10 +128,13 @@ bindsym $mod+o [instance="^((?!dropdown_*).)*$"] scratchpad show
 # dropdown
 # settings for dropdown
 for_window [instance="dropdown_*"] floating enable
-for_window [instance="dropdown_*"] resize set 625 400
+for_window [instance="dropdown_calcurse"] resize set 625 400
+for_window [instance="dropdown_term"] resize set 550 700
+for_window [instance="dropdown_calcurse"] move left 300 px
+for_window [instance="dropdown_term"] move right 400 px
+for_window [instance="dropdown_term"] move up 120 px
 for_window [instance="dropdown_*"] move scratchpad
 for_window [instance="dropdown_*"] border pixel 2
-for_window [instance="dropdown_*"] move position center
 
 # start scratchpad
 exec $term -n dropdown_calcurse -e calcurse
@@ -258,7 +261,7 @@ bindsym XF86AudioMute exec amixer sset Master toggle && pkill -SIGRTMIN+1 i3bloc
 bindsym --release Print exec scrot -s -e 'mv $f ~/Pictures/Shots/'
 
 #Shortcuts:
-bindsym $mod+i exec qutebrowser :'session-load -c MFE'
+bindsym $mod+i exec qutebrowser
 bindsym $mod+z exec zathura
 bindsym XF86ScreenSaver exec ~/scripts/lock.sh
 bindsym XF86AudioPlay exec playerctl play-pause && pkill -SIGRTMIN+1 i3blocks
