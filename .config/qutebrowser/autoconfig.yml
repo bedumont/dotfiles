@@ -59,6 +59,11 @@ settings:
     global: '#5F6485'
   colors.tabs.selected.odd.bg:
     global: '#5F6485'
+  content.notifications:
+    https://cmovies.co: false
+    https://hqq.tv: false
+    https://www.courrierinternational.com: false
+    https://www.reddit.com: false
   content.plugins:
     global: true
   editor.command:

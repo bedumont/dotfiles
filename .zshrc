@@ -106,6 +106,7 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 # Example aliases
 alias cfz="vim ~/.zshrc"
 alias cfi="vim ~/.config/i3/config"
+alias suck="cd ~/.local/suckless"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias pipinstall="pip install --user"
 alias sourcez="source ~/.zshrc"

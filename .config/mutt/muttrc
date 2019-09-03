@@ -55,6 +55,7 @@ mailboxes =Outlook/Inbox =Outlook/Archivage =Outlook/Sent =Outlook/Drafts =Outlo
 # some sane vim-like keybindings
 bind index,pager k previous-entry
 bind index,pager j next-entry
+bind index,pager \Cr group-reply
 bind index,pager g noop
 bind index,pager \Cu half-up
 bind index,pager \Cd half-down
@@ -80,3 +81,7 @@ source ~/.config/mutt/accounts/ulb.muttrc
 # when changing into other mailboxes, use different adresses etc.
 folder-hook ULB/* source ~/.config/mutt/accounts/ulb.muttrc
 folder-hook Outlook/* source ~/.config/mutt/accounts/outlook.muttrc
+
+# automatic save mail in proper archive folder
+# save-hook [Outlook] =Outlook/Archivage
+# save-hook [ULB] =ULB/Archives
