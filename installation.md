@@ -121,7 +121,7 @@ And run
 Uncomment locales and generate them
 
     $ vim /etc/locale.gen
-
+    ---------------------
     en_US.UTF-8 UTF-8  
     en_US ISO-8859-1  
     fr_BE.UTF-8 UTF-8  
@@ -133,13 +133,13 @@ Uncomment locales and generate them
 Create the locale.conf file and set de LANG variable
 
     $ vim /locale.conf
-
+    ------------------
     LANG=en_US.UTF-8
 
 Make keyboard layout persistent
 
     $ vim /etc/vconsole.conf
-
+    ------------------------
     KEYMAP=be-latin1
 
 ### Configure network
@@ -147,13 +147,13 @@ Make keyboard layout persistent
 Create hostname file
 
     $ vim /etc/hostname
-
+    -------------------
     archX230
 
 Match entries to hosts and ban 9gag
 
     $ vim /etc/hosts
-
+    ----------------
     127.0.0.1	localhost
     ::1 		localhost
     127.0.0.1	archX230.localdomain archX230
@@ -167,7 +167,7 @@ Install connman and iwd
 Create the two services for connman to use iwd:
 
     $ vim /etc/systemd/system/iwd.service
-
+    -------------------------------------
     [Unit]
     Description=Internet Wireless Daemon (IWD)
     Before=network.target
@@ -180,7 +180,7 @@ Create the two services for connman to use iwd:
     Alias=multi-user.target.wants/iwd.service
 
     $ vim /etc/systemd.system/connman_iwd.service
-    _____________________________________________
+    ---------------------------------------------
     [Unit]
     Description=Connection service
     DefaultDependencies=false
@@ -205,12 +205,14 @@ Create the two services for connman to use iwd:
     WantedBy=multi-user.target
 
 Then enable the services
+
     $ systemctl enable connman.service connman_iwd.service
 
 ### Initramfs
 
 Edit mkinitcpio config file with the following kernel hooks (assuming encrypt hook, not sd-encrypt):
-    $ vim /etc/mkinitcpio.conf
 
+    $ vim /etc/mkinitcpio.conf
+    --------------------------
     HOOKS=(base udev autodetect keyboard keymap modconf block lvm2 encrypt filesystems fsck)
 
