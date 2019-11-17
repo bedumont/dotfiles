@@ -5,13 +5,17 @@
 ### Download it [here](https://archlinux.org/download/)
 
 Verify file signature:
+
     $ gpg --keyserver-options auto-key-retrieve --verify archlinux-version-x86_64.iso.sig
+
 or from an existing arch install
+
     $ pacman-key -v archlinux-version-x86_64.iso.sig
 
 ### Create media
 
 dd it to pendrive:
+
     $ dd bs=4M if=path/to/archlinux.iso of=/dev/sdx status=progress oflag=sync
 
 ## Installation
@@ -19,17 +23,21 @@ dd it to pendrive:
 ### Boot it up !
 
 Load the keyboard layout
+
     $ loadkeys be-latin1
 
 Connect to the internet using wifi-menu
+
     $ wifi-menu
 
 Update system-clock
+
     $ timedatectl set-ntp true
 
 ### Prepare the disk
 
 Wipe the disk using dm-crypt
+
     $ cryptsetup open --type plain -d /dev/urandom /dev/sdX to_be_wiped
     $ dd bs=1M if=/dev/zero of=/dev/mapper/to_be_wiped status=progress
     $ cryptsetup close to_be_wiped
@@ -40,22 +48,23 @@ Wipe the disk using dm-crypt
 
 To be able to span both drive with the LUKS encryption we need to use LUKS on LVM
 
-+----------------+-------------------------------------------------------------------------------------------------+
-| Boot partition | dm-crypt plain encrypted volume | LUKS2 encrypted volume        | LUKS2 encrypted volume        |
-|                |                                 |                               |                               |
-| /boot          | [SWAP]                          | /                             | /home                         |
-|                |                                 |                               |                               |
-|                | /dev/mapper/swap                | /dev/mapper/root              | /dev/mapper/home              |
-|                |_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _|_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _|_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _|
-|                | Logical volume 1                | Logical volume 2              | Logical volume 3              |
-|                | /dev/MyVolGroup/cryptswap       | /dev/MyVolGroup/cryptroot     | /dev/MyVolGroup/crypthome     |
-|                |_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _|_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _|_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _|
-|   EFI ef00     |                                   Linux LVM 8e00                                                |
-|   512.0MiB     |                                   118.7GiB                                                      |
-|   /dev/sda1    |                                   /dev/sda2                                                     |
-+----------------+-------------------------------------------------------------------------------------------------+
+    +----------------+-------------------------------------------------------------------------------------------------+
+    | Boot partition | dm-crypt plain encrypted volume | LUKS2 encrypted volume        | LUKS2 encrypted volume        |
+    |                |                                 |                               |                               |
+    | /boot          | [SWAP]                          | /                             | /home                         |
+    |                |                                 |                               |                               |
+    |                | /dev/mapper/swap                | /dev/mapper/root              | /dev/mapper/home              |
+    |                |_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _|_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _|_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _|
+    |                | Logical volume 1                | Logical volume 2              | Logical volume 3              |
+    |                | /dev/MyVolGroup/cryptswap       | /dev/MyVolGroup/cryptroot     | /dev/MyVolGroup/crypthome     |
+    |                |_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _|_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _|_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _|
+    |   EFI ef00     |                                   Linux LVM 8e00                                                |
+    |   512.0MiB     |                                   118.7GiB                                                      |
+    |   /dev/sda1    |                                   /dev/sda2                                                     |
+    +----------------+-------------------------------------------------------------------------------------------------+
 
 Create physical and logical volumes
+
     $ pvcreate /dev/sda2
     $ vgcreate mvg /dev/sda2
     $ lvcreate -L 64G -n cryptroot mvg
@@ -64,12 +73,14 @@ Create physical and logical volumes
     $ lvcreate -l 100%FREE -n crypthome mvg
 
 Encrypt cryptroot (default options), create FS (ext4) and mount it at /mnt
+
     $ cryptsetup luksFormat /dev/mvg/cryptroot
     $ cryptsetup open /dev/mvg/cryptroot root
     $ mkfs.ext4 /dev/mapper/root
     $ mount /dev/mapper/root /mnt
 
 Create FS for boot partition
+
     $ dd if=/dev/zero of=/dev/sda1 bs=1M status=progress
     $ mkfs.ext4 /dev/sda1
     $ mkdir /mnt/boot
@@ -78,29 +89,37 @@ Create FS for boot partition
 ### Pacstrap and chroot
 
 Edit mirrors
+
     $ vim /etc/pacman.d/mirrorlist
 
 Install arch
+
     $ pacstrap /mnt base linux linux-firmware
 
 Generate fstab
+
     $ genfstab -U /mnt >    /mnt/etc/fstab
 
 Chroot into the new system
+
     $ arch-chroot /mnt
 
 Install vim obviously
+
     $ pacman -S vim
 
 ### Set time and locales
 
 Set the time-zone
+
     $ ln -sf /usr/share/zoneinfo/Europe/Brussels /etc/localtime
 
 And run
+
     $ hwclock --systohc
 
 Uncomment locales and generate them
+
     $ vim /etc/locale.gen
 
     en_US.UTF-8 UTF-8  
@@ -109,14 +128,17 @@ Uncomment locales and generate them
     fr_BE ISO-8859-1  
     fr_BE@euro ISO-8859-15  
 
+
     $ locale-gen
 
 Create the locale.conf file and set de LANG variable
+
     $ vim /locale.conf
 
     LANG=en_US.UTF-8
 
 Make keyboard layout persistent
+
     $ vim /etc/vconsole.conf
 
     KEYMAP=be-latin1
@@ -124,6 +146,7 @@ Make keyboard layout persistent
 ### Configure network
 
 Create hostname file
+
     $ vim /etc/hostname
 
     archX230
