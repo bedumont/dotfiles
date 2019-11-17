@@ -48,20 +48,21 @@ Wipe the disk using dm-crypt
 
 To be able to span both drive with the LUKS encryption we need to use LUKS on LVM
 
-    +----------------+-------------------------------------------------------------------------------------------------+
-    | Boot partition | dm-crypt plain encrypted volume | LUKS2 encrypted volume        | LUKS2 encrypted volume        |
-    |                |                                 |                               |                               |
-    | /boot          | [SWAP]                          | /                             | /home                         |
-    |                |                                 |                               |                               |
-    |                | /dev/mapper/swap                | /dev/mapper/root              | /dev/mapper/home              |
-    |                |_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _|_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _|_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _|
-    |                | Logical volume 1                | Logical volume 2              | Logical volume 3              |
-    |                | /dev/MyVolGroup/cryptswap       | /dev/MyVolGroup/cryptroot     | /dev/MyVolGroup/crypthome     |
-    |                |_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _|_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _|_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _|
-    |   EFI ef00     |                                   Linux LVM 8e00                                                |
-    |   512.0MiB     |                                   118.7GiB                                                      |
-    |   /dev/sda1    |                                   /dev/sda2                                                     |
-    +----------------+-------------------------------------------------------------------------------------------------+
+    +----------------+-----------------------------------------------------------------------------------+
+    | Boot partition | dm-crypt plain encrypted  | LUKS2 encrypted volume    | LUKS2 encrypted volume    |
+    |                | volume                    |                           |                           |
+    |                |                           |                           |                           |
+    | /boot          | [SWAP]                    | /                         | /home                     |
+    |                |                           |                           |                           |
+    |                | /dev/mapper/swap          | /dev/mapper/root          | /dev/mapper/home          |
+    |                |_ _ _ _ _ _ _ _ _ _ _ _ _ _|_ _ _ _ _ _ _ _ _ _ _ _ _ _|_ _ _ _ _ _ _ _ _ _ _ _ _ _|
+    |                | Logical volume 1          | Logical volume 2          | Logical volume 3          |
+    |                | /dev/MyVolGroup/cryptswap | /dev/MyVolGroup/cryptroot | /dev/MyVolGroup/crypthome |
+    |                |_ _ _ _ _ _ _ _ _ _ _ _ _ _|_ _ _ _ _ _ _ _ _ _ _ _ _ _|_ _ _ _ _ _ _ _ _ _ _ _ _ _|
+    |   EFI ef00     |                             Linux LVM 8e00                                        |
+    |   512.0MiB     |                             118.7GiB                                              |
+    |   /dev/sda1    |                             /dev/sda2                                             |
+    +----------------+-----------------------------------------------------------------------------------+
 
 Create physical and logical volumes
 
