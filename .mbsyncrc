@@ -12,8 +12,8 @@ IMAPStore ULB-remote
 Account ULB
 
 MaildirStore ULB-local
-Path ~/Mail/ULB/
-Inbox ~/Mail/ULB/INBOX
+Path ~/mail/ULB/
+Inbox ~/mail/ULB/INBOX
 Subfolders Verbatim
 
 Channel ULB
@@ -39,8 +39,8 @@ IMAPStore Outlook-remote
 Account Outlook
 
 MaildirStore Outlook-local
-Path ~/Mail/Outlook/
-Inbox ~/Mail/Outlook/Inbox
+Path ~/mail/Outlook/
+Inbox ~/mail/Outlook/Inbox
 Subfolders Verbatim
 
 Channel Outlook

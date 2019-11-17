@@ -1,14 +1,62 @@
 #!/bin/sh
+
 [ -z "$1" ] && echo "Give either a pdf file or a DOI as an argument." && exit
 
 if [ -f "$1" ]; then
 	# Try to get DOI from pdfinfo or pdftotext output.
 	doi=$(pdfinfo "$1" | grep -io "doi:.*") ||
-	doi=$(pdftotext "$1" 2>/dev/null - | grep -io "doi:.*" -m 1) ||
+	doi=$(pdftotext "$1" 2>/dev/null - | grep -io "doi[,=,:]*\S*" -m 1 | sed "s/=/:/" | tr -d '[:space:]') ||
 	exit 1
 else
 	doi="$1"
 fi
 
 # Check crossref.org for the bib citation.
-curl -s "http://api.crossref.org/works/$doi/transform/application/x-bibtex" -w "\\n"
+curl -s "http://api.crossref.org/works/$doi/transform/application/x-bibtex" -w "\\n" > tmp.txt
+echo $'\r' >> tmp.txt
+cat tmp.txt
+
+while true; do
+    read -p $"Save ? " yn
+    case $yn in
+        [Yy]* ) echo Ok
+            read -p "Please enter your labels: " labels
+            addline="\ \ \ \ label = {$labels},"
+            sed "s/\t/    /g" tmp.txt | sed "1 a $addline" >> "$BIB"
+            rm tmp.txt
+            exit;;
+        [Nn]* ) break;;
+    esac
+done
+
+while true; do
+    read -p $"Try arXiv ? " yn
+    case $yn in
+        [Yy]* ) echo Ok
+            if [ -f "$1" ]; then
+                arxiv=$(pdfinfo "$1" | grep -io "arxiv:.*") ||
+                arxiv=$(pdftotext "$1" 2>/dev/null - | grep -io "arxiv:.*" -m 1 | sed -E "s/.*([0-9]{4}\.[0-9]{5}).*/\1/") ||
+                exit 1
+            else
+                arxiv="$1"
+            fi
+            arxiv2bib "$arxiv" | sed "s/^\([A-Za-z].*\s*=\s*{\)/    \1/" > tmp.txt
+            echo $'\r' >> tmp.txt
+            cat tmp.txt
+            break;;
+        [Nn]* ) rm tmp.txt; exit;;
+    esac
+done
+
+while true; do
+    read -p $"Save ? " yn
+    case $yn in
+        [Yy]* ) echo ok
+            read -p "Please enter your labels: " labels
+            addline="\ \ \ \ label = {$labels},"
+            sed "1 a $addline" tmp.txt >> "$BIB"
+            rm tmp.txt
+            exit;;
+        [Nn]* ) rm tmp.txt; exit;;
+    esac
+done

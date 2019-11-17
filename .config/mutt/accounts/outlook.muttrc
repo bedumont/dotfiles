@@ -11,3 +11,5 @@ set postponed = "+Outlook/Drafts"
 set mbox = "+Outlook/Archivage"
 
 color status green default
+
+save-hook . =Outlook/Archivage

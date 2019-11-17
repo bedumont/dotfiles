@@ -11,3 +11,9 @@ set postponed = "+ULB/Drafts"
 set mbox = "+ULB/Archives"
 
 color status cyan default
+
+# Signature
+
+set signature = "~/.config/mutt/signature_ulb"
+
+save-hook . =ULB/Archives
