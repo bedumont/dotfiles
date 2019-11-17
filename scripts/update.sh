@@ -1,2 +1,0 @@
-clear
-sudo pacman -Syu

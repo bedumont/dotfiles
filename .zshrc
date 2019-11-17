@@ -7,10 +7,15 @@ export FILE=vifm
 export EDITOR=vim
 export VISUAL=vim
 export RANGER_LOAD_DEFAULT_RC=false
+export BROWSER=qutebrowser
+export BIB="$HOME/documents/papers/BIB.bib"
 
 # Path to your oh-my-zsh installation.
 ZSH=/usr/share/oh-my-zsh/
 
+# vi mode
+bindkey -v
+export KEYTIMEOUT=1
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -104,20 +109,26 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias cfz="vim ~/.zshrc"
-alias cfi="vim ~/.config/i3/config"
-alias suck="cd ~/.local/suckless"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-alias pipinstall="pip install --user"
-alias sourcez="source ~/.zshrc"
-alias MA2="cd ~/ULB/MA2-Polytech"
-alias mfe="cd ~/ULB/MA2-Polytech/MFE"
-alias MFE="cd ~/ULB/MA2-Polytech/MFE; source ~/ULB/MA2-Polytech/MFE/venv/bin/activate"
-alias config="/usr/bin/git --git-dir=$HOME/.myconfig/ --work-tree=$HOME"
-alias mutt='cd ~/attachments && mutt'
-alias suckclean="make clean && rm  -f config.h && git reset --hard origin/master"
-alias fixwifi="sudo ip link set wlp3s0 down"
-
+alias cfz="vim ~/.zshrc" \
+        cfi="vim ~/.config/i3/config" \
+        suck="cd ~/.local/suckless" \
+        pipinstall="pip install --user" \
+        sourcez="source ~/.zshrc" \
+        MA2="cd ~/ULB/MA2-Polytech" \
+        mfe="cd ~/ULB/MA2-Polytech/MFE" \
+        MFE="cd ~/ULB/MA2-Polytech/MFE; source ~/ULB/MA2-Polytech/MFE/venv/bin/activate" \
+        config="/usr/bin/git --git-dir=$HOME/.myconfig/ --work-tree=$HOME" \
+        mutt='cd ~/attachments && mutt' \
+        suckclean="make clean && rm  -f config.h && git reset --hard origin/master" \
+        fixwifi="sudo ip link set wlp3s0 down" \
+        updt="sudo pacman -Syu && pkill -RTMIN+9 dwmblocks" \
+        pinstall="sudo pacman -S" \
+        mpvrecord="mpv --demuxer-lavf-format video4linux2 --demuxer-lavf-o-set input_format=mjpeg av://v4l2:/dev/video0" \
+        x="sxiv -ft *" \
+        hh="cd ~/" \
+        pp="cd ~/pictures" \
+        ddd="cd ~/documents" \
+        bb="cd ~/builds" 
 
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
@@ -126,3 +137,9 @@ fi
 
 source $ZSH/oh-my-zsh.sh
 bindkey '^[[Z' reverse-menu-complete
+
+# Load zsh-syntax-highlignting
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+
+# Node version manager
+source /usr/share/nvm/init-nvm.sh

@@ -4,7 +4,11 @@
 pgrep -cu "$USER" >/dev/null || exit
 
 # Checks for internet connection and set notification script.
-ping -q -c 1 1.1.1.1 > /dev/null || exit
+wget -q --spider https://google.com
+if [ $? -ne 0 ]; then
+    exit
+fi
+# ping -q -c 1 1.1.1.1 > /dev/null || exit
 command -v notify-send >/dev/null || echo "Note that \`libnotify\` or \`libnotify-send\` should be installed for pop-up mail notifications with this script."
 
 export DISPLAY=:0.0
@@ -26,10 +30,10 @@ fi
 
 
 # Check all accounts/mailboxes for new mail. Notify if there is new content.
-for account in "$HOME//Mail/"*
+for account in "$HOME//mail/"*
 do
     acc="$(echo "$account" | sed "s/.*\///")"
-    newcount=$(find "$HOME/Mail/$acc/INBOX/new/" "$HOME/Mail/$acc/Inbox/new/" "$HOME/Mail/$acc/inbox/new/" -type f -newer "$HOME/.config/mutt/.mailsynclastrun" 2> /dev/null | wc -l)
+    newcount=$(find "$HOME/mail/$acc/INBOX/new/" "$HOME/mail/$acc/Inbox/new/" "$HOME/mail/$acc/inbox/new/" -type f -newer "$HOME/.config/mutt/.mailsynclastrun" 2> /dev/null | wc -l)
     [ "$newcount" -gt "0" ] && notify "$acc" "$newcount" &
 done
 notmuch new 2>/dev/null
