@@ -128,8 +128,6 @@ Uncomment locales and generate them
     fr_BE ISO-8859-1  
     fr_BE@euro ISO-8859-15  
 
-   
-
     $ locale-gen
 
 Create the locale.conf file and set de LANG variable
@@ -153,6 +151,7 @@ Create hostname file
     archX230
 
 Match entries to hosts and ban 9gag
+
     $ vim /etc/hosts
 
     127.0.0.1	localhost
@@ -162,9 +161,11 @@ Match entries to hosts and ban 9gag
     0.0.0.0     9gag.com
 
 Install connman and iwd
+    
     $ pacman -S connman iwd
 
 Create the two services for connman to use iwd:
+
     $ vim /etc/systemd/system/iwd.service
 
     [Unit]
@@ -179,7 +180,7 @@ Create the two services for connman to use iwd:
     Alias=multi-user.target.wants/iwd.service
 
     $ vim /etc/systemd.system/connman_iwd.service
-
+    _____________________________________________
     [Unit]
     Description=Connection service
     DefaultDependencies=false
