@@ -128,6 +128,7 @@ Uncomment locales and generate them
     fr_BE ISO-8859-1  
     fr_BE@euro ISO-8859-15  
 
+   
 
     $ locale-gen
 
