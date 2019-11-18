@@ -1,0 +1,24 @@
+diff --git a/config.def.h b/config.def.h
+index 60eb376..c6fc22d 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -9,15 +9,15 @@ static char *fontfallbacks[] = {
+ #define FONTSZ(x) ((int)(10.0 * powf(1.1288, (x)))) /* x in [0, NUMFONTSCALES-1] */
+ 
+ static const char *colors[] = {
+-	"#000000", /* foreground color */
+-	"#FFFFFF", /* background color */
++	"#FFFFFF", /* foreground color */
++	"#232731", /* background color */
+ };
+ 
+ static const float linespacing = 1.4;
+ 
+ /* how much screen estate is to be used at max for the content */
+-static const float usablewidth = 0.75;
+-static const float usableheight = 0.75;
++static const float usablewidth = 1;
++static const float usableheight = 1;
+ 
+ static Mousekey mshortcuts[] = {
+ 	/* button         function        argument */
