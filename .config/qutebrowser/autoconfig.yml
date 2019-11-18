@@ -130,6 +130,8 @@ settings:
     global: true
   tabs.last_close:
     global: close
+  tabs.new_position.unrelated:
+    global: next
   tabs.pinned.shrink:
     global: true
   tabs.position:
