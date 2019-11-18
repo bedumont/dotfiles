@@ -161,52 +161,13 @@ Match entries to hosts and ban 9gag
     
     0.0.0.0     9gag.com
 
-Install connman and iwd
+Install iwd
     
-    # pacman -S connman iwd
+    # pacman -S iwd
 
-Create the two services for connman to use iwd:
+Then enable iwd and systemd-resolved services
 
-    # vim /etc/systemd/system/iwd.service
-    -------------------------------------
-    [Unit]
-    Description=Internet Wireless Daemon (IWD)
-    Before=network.target
-    Wants=network.target
-    
-    [Service]
-    ExecStart=/usr/lib/iwd/iwd
-    
-    [Install]
-    Alias=multi-user.target.wants/iwd.service
-
-    # vim /etc/systemd.system/connman_iwd.service
-    ---------------------------------------------
-    [Unit]
-    Description=Connection service
-    DefaultDependencies=false
-    Conflicts=shutdown.target
-    RequiresMountsFor=/var/lib/connman
-    After=dbus.service network-pre.target systemd-sysusers.service iwd.service
-    Before=network.target multi-user.target shutdown.target
-    Wants=network.target
-    Requires=iwd.service
-    
-    [Service]
-    Type=dbus
-    BusName=net.connman
-    Restart=on-failure
-    ExecStart=/usr/bin/connmand --wifi=iwd_agent -n 
-    StandardOutput=null
-    CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW CAP_SYS_TIME CAP_SYS_MODULE
-    ProtectHome=true
-    ProtectSystem=true
-    
-    [Install]
-    WantedBy=multi-user.target 
-Then enable the services
-
-    # systemctl enable connman.service connman_iwd.service
+    # systemctl enable iwd.service systemd-resolved.service
 
 ### Initramfs
 
@@ -262,6 +223,8 @@ To automatically re-encrypt temporary filesystems (swap and tmp) at reboot
     ----------------
     /dev/mapper/tmp     /tmp        tmpfs       defaults        0       0
     /dev/mapper/swap    none        swap        default,pri=-2  0       0
+    
+**REBOOT**
 
 ### Encrypt the home partition
 
@@ -286,3 +249,18 @@ Edit crypttab and fstab to enable decryption of home partition
     # vim /etc/fstab
     ----------------
     /dev/mapper/home        /home   ext4        defaults        0       2
+
+### Users configuration
+
+Create yourself
+
+    # useradd -m -G wheel ben
+    # passwd ben
+
+Install sudo and uncomment wheel group
+
+    # pacman -S sudo
+
+    # EDITOR=vim visudo
+    -------------------
+    %wheel ALL=(ALL) ALL
