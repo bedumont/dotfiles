@@ -1,5 +1,5 @@
 diff --git a/config.def.h b/config.def.h
-index 1c0b587..a4de6d0 100644
+index 1c0b587..0ce1f63 100644
 --- a/config.def.h
 +++ b/config.def.h
 @@ -1,4 +1,5 @@
@@ -48,7 +48,7 @@ index 1c0b587..a4de6d0 100644
  #define TAGKEYS(KEY,TAG) \
  	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
  	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
-@@ -56,44 +58,73 @@ static const Layout layouts[] = {
+@@ -56,44 +58,74 @@ static const Layout layouts[] = {
  
  /* commands */
  static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
@@ -120,7 +120,8 @@ index 1c0b587..a4de6d0 100644
 +	{ 0,                    XF86XK_AudioLowerVolume,  spawn,          {.v = update_vol } },
 +	{ 0,                    XF86XK_AudioMute,         spawn,          {.v = mute } },
 +	{ 0,                    XF86XK_AudioMute,         spawn,          {.v = update_vol } },
-+	{ 0,                    XK_Print,                 spawn,          SHCMD("sleep 0.2; scrot -s -e 'mv $f ~/pictures/shots'") },
++	{ 0,                    XK_Print,                 spawn,          SHCMD("sleep 0.2; scrot -e 'mv $f ~/pictures/shots'") },
++	{ MODKEY,               XK_Print,                 spawn,          SHCMD("sleep 0.2; scrot -s -e 'mv $f ~/pictures/shots'") },
 +	{ MODKEY,               XK_F1,                    spawn,          {.v = suspend } },
 +	{ MODKEY,               XK_b,                     togglebar,      {0} },
 +	{ MODKEY,               XK_j,                     focusstack,     {.i = +1 } },
@@ -157,7 +158,7 @@ index 1c0b587..a4de6d0 100644
  };
  
  /* button definitions */
-@@ -103,6 +134,7 @@ static Button buttons[] = {
+@@ -103,6 +135,7 @@ static Button buttons[] = {
  	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
  	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
  	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },

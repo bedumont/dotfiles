@@ -1,8 +1,8 @@
 diff --git a/config.def.h b/config.def.h
-index 6ebea98..482901e 100644
+index 546edda..baee104 100644
 --- a/config.def.h
 +++ b/config.def.h
-@@ -195,6 +195,10 @@ static Shortcut shortcuts[] = {
+@@ -203,6 +203,10 @@ static Shortcut shortcuts[] = {
   * * 0: no value
   * * > 0: cursor application mode enabled
   * * < 0: cursor application mode disabled
@@ -14,10 +14,10 @@ index 6ebea98..482901e 100644
   * Be careful with the order of the definitions because st searches in
   * this table sequentially, so any XK_ANY_MOD must be in the last
 diff --git a/st.c b/st.c
-index ede7ae6..f55d30f 100644
+index 3e48410..ab291ac 100644
 --- a/st.c
 +++ b/st.c
-@@ -1914,6 +1914,59 @@ strparse(void)
+@@ -1919,6 +1919,59 @@ strparse(void)
  	}
  }
  
@@ -78,10 +78,10 @@ index ede7ae6..f55d30f 100644
  strdump(void)
  {
 diff --git a/st.h b/st.h
-index 4da3051..4b0a1ff 100644
+index a1928ca..aabc9b7 100644
 --- a/st.h
 +++ b/st.h
-@@ -79,6 +79,7 @@ typedef union {
+@@ -80,6 +80,7 @@ typedef union {
  void die(const char *, ...);
  void redraw(void);
  void draw(void);

@@ -1,5 +1,5 @@
 diff --git a/config.def.h b/config.def.h
-index 6ebea98..a59df09 100644
+index 546edda..ae06b44 100644
 --- a/config.def.h
 +++ b/config.def.h
 @@ -5,7 +5,7 @@
@@ -91,7 +91,7 @@ index 6ebea98..a59df09 100644
  
  /*
   * Default shape of cursor
-@@ -164,20 +170,39 @@ static MouseShortcut mshortcuts[] = {
+@@ -172,20 +178,39 @@ static MouseShortcut mshortcuts[] = {
  #define MODKEY Mod1Mask
  #define TERMMOD (ControlMask|ShiftMask)
  
@@ -136,7 +136,7 @@ index 6ebea98..a59df09 100644
  };
  
  /*
-@@ -195,6 +220,10 @@ static Shortcut shortcuts[] = {
+@@ -203,6 +228,10 @@ static Shortcut shortcuts[] = {
   * * 0: no value
   * * > 0: cursor application mode enabled
   * * < 0: cursor application mode disabled

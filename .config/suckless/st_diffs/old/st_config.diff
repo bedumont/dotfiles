@@ -1,5 +1,5 @@
 diff --git a/config.def.h b/config.def.h
-index 482901e..a59df09 100644
+index 546edda..ae06b44 100644
 --- a/config.def.h
 +++ b/config.def.h
 @@ -5,7 +5,7 @@
@@ -91,7 +91,7 @@ index 482901e..a59df09 100644
  
  /*
   * Default shape of cursor
-@@ -164,20 +170,39 @@ static MouseShortcut mshortcuts[] = {
+@@ -172,20 +178,39 @@ static MouseShortcut mshortcuts[] = {
  #define MODKEY Mod1Mask
  #define TERMMOD (ControlMask|ShiftMask)
  
@@ -136,3 +136,14 @@ index 482901e..a59df09 100644
  };
  
  /*
+@@ -203,6 +228,10 @@ static Shortcut shortcuts[] = {
+  * * 0: no value
+  * * > 0: cursor application mode enabled
+  * * < 0: cursor application mode disabled
++ * crlf value
++ * * 0: no value
++ * * > 0: crlf mode is enabled
++ * * < 0: crlf mode is disabled
+  *
+  * Be careful with the order of the definitions because st searches in
+  * this table sequentially, so any XK_ANY_MOD must be in the last
