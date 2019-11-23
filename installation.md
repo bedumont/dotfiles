@@ -1,6 +1,6 @@
 # Ben's installation guide
 
-> The following has been sourced almost entirely from the Arch wiki. Thanks to all the contributors for this amazgin resource.
+> The following has been sourced almost entirely from the Arch wiki. Thanks to all the contributors for this amazing resource.
 
 ## Get arch
 
@@ -65,6 +65,22 @@ To be able to span both drive with the LUKS encryption we need to use LUKS on LV
     |   512.0MiB     |                                     118.7GiB                                      |
     |   /dev/sda1    |                                     /dev/sda2                                     |
     +----------------+-----------------------------------------------------------------------------------+
+
+    +----------------------------------------------------------------------------------------------------+
+    |                                       LUKS2 encrypted volume                                       |
+    |                                                                                                    |
+    |                                                                                                    |
+    |                                       /home                                                        |
+    |                                                                                                    |
+    |                                       /dev/mapper/home                                             |
+    |__ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _|
+    |                                       Logical volume 4                                             |
+    |                                       /dev/mvg/crypthome                                           |
+    |__ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _|
+    |                                       Linux LVM 8e00                                               |
+    |                                       118.7GiB                                                     |
+    |                                       /dev/sda2                                                    |
+    +----------------------------------------------------------------------------------------------------+
 
 Create physical and logical volumes
 
