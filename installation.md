@@ -48,7 +48,7 @@ Wipe the disk using dm-crypt
 
 **We chose GPT so we use gdisk**
 
-To be able to span both drive with the LUKS encryption we need to use LUKS on LVM
+To be able to span both drives with the LUKS encryption we need to use LUKS on LVM
 
     +----------------+-----------------------------------------------------------------------------------+
     | Boot partition | LUKS2 encrypted    | dm-crypt plain     | dm-crypt plain     | LUKS2 encrypted    |
@@ -78,8 +78,8 @@ To be able to span both drive with the LUKS encryption we need to use LUKS on LV
     |                                       /dev/mvg/crypthome                                           |
     |__ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _|
     |                                       Linux LVM 8e00                                               |
-    |                                       118.7GiB                                                     |
-    |                                       /dev/sda2                                                    |
+    |                                       465.6GiB                                                     |
+    |                                       /dev/sdb1                                                    |
     +----------------------------------------------------------------------------------------------------+
 
 Create physical and logical volumes
