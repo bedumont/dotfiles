@@ -1,0 +1,158 @@
+"General
+" required:
+set nocompatible
+" required:
+" filetype off
+set autoindent
+set hlsearch
+set rnu nu
+let mapleader = ' '
+
+" Assign <s-tab>
+exe 'set t_kB=' . nr2char(27) . '[Z'
+
+" Toggle paste mode
+nnoremap <F10> :set paste! paste?<CR>
+
+" Always show status line
+set laststatus=2
+"modifiedflag, charcount, filepercent, filepath
+set statusline=%m\ %c\ %l/%L%=%P\ %f\ -\ %y
+" Draw a line at cursor position
+set cursorline
+highlight clear CursorLine
+highlight CursorLine ctermbg=0
+" Color the 81th column
+highlight ColorColumn ctermbg=0
+set colorcolumn=81
+
+" Clear autocmd
+autocmd!
+
+"split navigations
+set splitbelow
+set splitright
+
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+nnoremap & 1
+nnoremap é 2
+nnoremap " 3
+nnoremap ' 4
+nnoremap ( 5
+nnoremap § 6
+nnoremap è 7
+nnoremap ! 8
+nnoremap ç 9
+nnoremap à 0
+
+nnoremap <leader>j :bn<CR>
+nnoremap <leader>k :bp<CR>
+nnoremap <leader>d :bd<CR>
+nnoremap <leader>c :Kwbd<CR>
+nnoremap <leader>: :nohls<CR>
+
+" Autoclose braces
+inoremap " ""<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap {<CR> {<CR>}<ESC>O
+inoremap {;<CR> {<CR>};<ESC>O
+
+" Enable folding
+set foldmethod=indent
+set foldlevel=99
+
+" Enable folding with the spacebar
+nnoremap <n><space> za
+
+let python_highlight_all=1
+filetype plugin indent on
+syntax on
+
+"python with virtualenv support
+py << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+  project_base_dir = os.environ['VIRTUAL_ENV']
+  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+  execfile(activate_this, dict(__file__=activate_this))
+EOF
+set encoding=utf-8
+
+" Apply macros with Q
+nnoremap Q @q
+vnoremap Q :norm @q<cr>
+
+" Setup netrw
+
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 20
+
+"augroup ProjectDrawer
+"  autocmd!
+"  autocmd VimEnter * :Vexplore
+"augroup END
+
+" show existing tab with 4 spaces width
+set tabstop=4
+" when indenting with '>', use 4 spaces width
+set shiftwidth=4
+" On pressing tab, insert 4 spaces
+set expandtab
+
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+" Buffer behavior
+set hidden
+nnoremap <BS> <C-^>
+nnoremap <leader>b :ls<CR>:b<Space>
+
+let &t_SI = "\<esc>[5 q"
+let &t_SR = "\<esc>[4 q"
+let &t_EI = "\<esc>[2 q"
+autocmd VimLeave * let &t_me="\<esc>[4 q"
+
+" Automatically save the file notes when idle
+autocmd CursorHold .notes.md :write
+
+" Goyo
+noremap <leader>G :Goyo<CR>
+" Enable Goyo by default for mutt writing"
+        autocmd BufRead,BufNewFile /tmp/neomutt* let g:goyo_width=80
+        autocmd BufRead,BufNewFile /tmp/neomutt* :Goyo
+ 
+" Run xrdb whenever Xdefaults of Xresources are updated
+        autocmd BufWritePost ~/.Xresources,~/.Xdefaults !xrdb %
+
+" Recompile suckless programs automatically
+        "autocmd BufWritePost config.h,config.def.h !sudo make install
+
+" Config vimtex
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
+
+" Config UltiSnips
+let g:UltiSnipsSnippetDirectories = ['/home/ben/.vim/UltiSnips', '/home/ben/.vim/my-snippets/']
+let g:UltiSnipsExpandTrigger = '<C-x>'
+let g:UltiSnipsJumpForwardTrigger = '<C-b>'
+let g:UltiSnipsJumpBackwardTrigger = '<C-z>'
+autocmd BufWritePost ~/.vim/my-snippets/*.snippets call UltiSnips#RefreshSnippets()
+noremap <leader>ul :edit ~/.vim/my-snippets/tex.snippets<CR>
+noremap <leader>uc :edit ~/.vim/my-snippets/cpp.snippets
+
+" Opens .vimrc and automatically source it upon change
+map <leader>v :e ~/.vim/vimrc<CR>
+autocmd BufWritePost ~/.vim/vimrc source ~/.vim/vimrc

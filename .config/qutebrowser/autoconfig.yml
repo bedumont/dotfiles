@@ -48,6 +48,8 @@ settings:
       <Enter>: <Return>
       <Shift-Enter>: <Return>
       <Shift-Return>: <Return>
+  colors.completion.even.bg:
+    global: '#333333'
   colors.statusbar.insert.bg:
     global: '#a3be8c'
   colors.statusbar.url.hover.fg:

@@ -191,11 +191,11 @@ Create and edit iwd config file
     use_default_interface=true
 
     [Network]
-    NameResolvingService=resolvconf
+    NameResolvingService=systemd
 
-Then enable iwd and systemd-resolved services
+Then enable iwd, systemd-networkd and systemd-resolved services
 
-    # systemctl enable iwd.service && systemctl enable systemd-resolved.service
+    # systemctl enable iwd.service && systemctl enable systemd-networkd.service systemctl enable systemd-resolved.service
 
 ### Initramfs
 
@@ -236,7 +236,7 @@ Create config file. **BEWARE, the UUID must be the UUID of the LUKS encrypted pa
     title   Arch Linux Encrypted
     linux   /vmlinuz-linux
     initrd  /initramfs-linux.img
-    options cryptdevice=UUID=<UUID>:root resume=/dev/mapper/swap root=/dev/mapper/root rw
+    options cryptdevice=UUID=<UUID>:root root=/dev/mapper/root rw
 
 ### Configuring crypttab and fstab
 
