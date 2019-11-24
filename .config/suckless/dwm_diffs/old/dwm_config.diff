@@ -1,14 +1,20 @@
 diff --git a/config.def.h b/config.def.h
-index 1c0b587..0ce1f63 100644
+index 1c0b587..fab1a03 100644
 --- a/config.def.h
 +++ b/config.def.h
-@@ -1,4 +1,5 @@
+@@ -1,21 +1,22 @@
  /* See LICENSE file for copyright and license details. */
 +#include <X11/XF86keysym.h>
  
  /* appearance */
  static const unsigned int borderpx  = 1;        /* border pixel of windows */
-@@ -11,11 +12,11 @@ static const char col_gray1[]       = "#222222";
+ static const unsigned int snap      = 32;       /* snap pixel */
+ static const int showbar            = 1;        /* 0 means no bar */
+ static const int topbar             = 1;        /* 0 means bottom bar */
+-static const char *fonts[]          = { "monospace:size=10" };
++static const char *fonts[]          = { "monospace:size=12" };
+ static const char dmenufont[]       = "monospace:size=10";
+ static const char col_gray1[]       = "#222222";
  static const char col_gray2[]       = "#444444";
  static const char col_gray3[]       = "#bbbbbb";
  static const char col_gray4[]       = "#eeeeee";
