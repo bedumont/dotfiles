@@ -231,12 +231,14 @@ Find the drives UUID
 
 Create config file. **BEWARE, the UUID must be the UUID of the LUKS encrypted partition, not the unencrypted root partition**
 
+The acpi_osi= option is set to enable brightness control using the fn keys
+
     # vim /boot/loader/entries/arch-encrypted.conf
     ------------------------------------------
     title   Arch Linux Encrypted
     linux   /vmlinuz-linux
     initrd  /initramfs-linux.img
-    options cryptdevice=UUID=<UUID>:root root=/dev/mapper/root rw
+    options cryptdevice=UUID=<UUID>:root root=/dev/mapper/root rw acpi_osi=
 
 ### Configuring crypttab and fstab
 
