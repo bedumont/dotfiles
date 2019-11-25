@@ -1,5 +1,7 @@
 # Ben's installation guide
 
+> The following has been sourced almost entirely from the Arch wiki. Thanks to all the contributors for this amazing resource.
+
 ## Get arch
 
 ### Download it [here](https://archlinux.org/download/)
@@ -46,7 +48,7 @@ Wipe the disk using dm-crypt
 
 **We chose GPT so we use gdisk**
 
-To be able to span both drive with the LUKS encryption we need to use LUKS on LVM
+To be able to span both drives with the LUKS encryption we need to use LUKS on LVM
 
     +----------------+-----------------------------------------------------------------------------------+
     | Boot partition | LUKS2 encrypted    | dm-crypt plain     | dm-crypt plain     | LUKS2 encrypted    |
@@ -63,6 +65,22 @@ To be able to span both drive with the LUKS encryption we need to use LUKS on LV
     |   512.0MiB     |                                     118.7GiB                                      |
     |   /dev/sda1    |                                     /dev/sda2                                     |
     +----------------+-----------------------------------------------------------------------------------+
+
+    +----------------------------------------------------------------------------------------------------+
+    |                                       LUKS2 encrypted volume                                       |
+    |                                                                                                    |
+    |                                                                                                    |
+    |                                       /home                                                        |
+    |                                                                                                    |
+    |                                       /dev/mapper/home                                             |
+    |__ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _|
+    |                                       Logical volume 4                                             |
+    |                                       /dev/mvg/crypthome                                           |
+    |__ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _|
+    |                                       Linux LVM 8e00                                               |
+    |                                       465.6GiB                                                     |
+    |                                       /dev/sdb1                                                    |
+    +----------------------------------------------------------------------------------------------------+
 
 Create physical and logical volumes
 
@@ -165,9 +183,19 @@ Install iwd
     
     # pacman -S iwd
 
-Then enable iwd and systemd-resolved services
+Create and edit iwd config file
 
-    # systemctl enable iwd.service systemd-resolved.service
+    # sudo vim /etc/iwd/main.conf
+    -----------------------------
+    [General]
+    use_default_interface=true
+
+    [Network]
+    NameResolvingService=systemd
+
+Then enable iwd, systemd-networkd and systemd-resolved services
+
+    # systemctl enable iwd.service && systemctl enable systemd-networkd.service systemctl enable systemd-resolved.service
 
 ### Initramfs
 
@@ -203,12 +231,14 @@ Find the drives UUID
 
 Create config file. **BEWARE, the UUID must be the UUID of the LUKS encrypted partition, not the unencrypted root partition**
 
+The acpi_osi= option is set to enable brightness control using the fn keys
+
     # vim /boot/loader/entries/arch-encrypted.conf
     ------------------------------------------
     title   Arch Linux Encrypted
     linux   /vmlinuz-linux
     initrd  /initramfs-linux.img
-    options cryptdevice=UUID=<UUID>:root resume=/dev/mapper/swap root=/dev/mapper/root rw
+    options cryptdevice=UUID=<UUID>:root root=/dev/mapper/root rw acpi_osi=
 
 ### Configuring crypttab and fstab
 
@@ -264,3 +294,49 @@ Install sudo and uncomment wheel group
     # EDITOR=vim visudo
     -------------------
     %wheel ALL=(ALL) ALL
+
+## Global config
+
+### Dotfiles
+
+Clone the dotfile repoo
+
+### Keyboard in X
+
+Config keymap for Xorg
+
+    # localectl --no-convert set-x11-keymap be
+
+
+## Expanding lvm on multiple disks
+
+### Add a new drive
+
+Connect using root or from a live USB, create a signle Linux LVM partitoon on the drive (8e00) using gdisk and create the physical volume:
+
+    # pvcreate /dev/sdY1
+    # vgextend mvg /dev/sdY1
+
+### Extend the logical volume
+
+Expand the mvg/crypthome with fresh disk space
+
+    # umount /home
+    # fsck /dev/mapper/home
+    # cryptsetup luksClose /dev/mapper/home
+    # lvextend -l +100%FREE mvg/crypthome
+
+The logical volume is then extended
+
+    # cryptsetup open /dev/mvg/crypthome home
+    # umount /home
+    # cryptsetup --verbose resize home
+
+Finally the file system is resized
+
+    # e2fsck -f /dev/mapper/home
+    # resize2fs /dev/mapper/home
+
+The /home can be remounted
+
+    # mount /dev/mapper/home /home
