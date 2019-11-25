@@ -36,4 +36,5 @@ source /home/ben/.config/zsh/plugins/zsh-sudo/sudo.plugin.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 
 # Enable autocompletion
-autoload -Uz compinit && compinit
+autoload -Uz compinit
+compinit 

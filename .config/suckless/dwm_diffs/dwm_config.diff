@@ -1,5 +1,5 @@
 diff --git a/config.def.h b/config.def.h
-index 1c0b587..0ce1f63 100644
+index 1c0b587..52716f4 100644
 --- a/config.def.h
 +++ b/config.def.h
 @@ -1,4 +1,5 @@
@@ -58,7 +58,7 @@ index 1c0b587..0ce1f63 100644
 +static const char *browser[]  = { "qutebrowser", NULL };
 +static const char *document_viewer[]  = { "zathura", NULL };
 +static const char *lockscreen[]  = { "/home/ben/scripts/lock.sh", NULL };
-+static const char *passmenu[]  = { "passmenu", NULL };
++static const char *passmenu[]  = { "/usr/bin/passmenu", NULL };
 +static const char *upvol[] = { "amixer", "-q", "sset", "Master", "5%+", NULL };
 +static const char *downvol[] = { "amixer", "-q", "sset", "Master", "5%-", NULL };
 +static const char *mute[] = { "amixer", "-q", "-D", "pulse", "sset", "Master", "toggle", NULL };
