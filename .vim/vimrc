@@ -8,6 +8,9 @@ set hlsearch
 set rnu nu
 let mapleader = ' '
 
+" Change viminfo folder
+set viminfo+=n$HOME/.vim/viminfo
+
 " Assign <s-tab>
 exe 'set t_kB=' . nr2char(27) . '[Z'
 
@@ -152,6 +155,10 @@ let g:UltiSnipsJumpBackwardTrigger = '<C-z>'
 autocmd BufWritePost ~/.vim/my-snippets/*.snippets call UltiSnips#RefreshSnippets()
 noremap <leader>ul :edit ~/.vim/my-snippets/tex.snippets<CR>
 noremap <leader>uc :edit ~/.vim/my-snippets/cpp.snippets
+
+" Config EasyAlign
+xmap ga :EasyAlign
+nmap ga :EasyAlign
 
 " Opens .vimrc and automatically source it upon change
 map <leader>v :e ~/.vim/vimrc<CR>

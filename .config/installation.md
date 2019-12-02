@@ -299,7 +299,38 @@ Install sudo and uncomment wheel group
 
 ### Dotfiles
 
-Clone the dotfile repoo
+Clone the dotfile repo
+
+    $ git clone https://github.com/bedumont/dotfiles
+
+### ZSH
+
+Install ZSH
+
+    $ sudo pacman -S zsh zsh-completions zsh-syntax-highlighting
+
+Export XDG_CONFIG_HOME, XDG_CACHE_HOME and ZDOTDIR
+
+    $ sudo vim /etc/zsh/zshenv
+    --------------------------
+    if [[ -z "$XDG_CONFIG_HOME" ]]
+    then
+    	        export XDG_CONFIG_HOME="$HOME/.config/"
+    fi
+    
+    if [[ -z "$XDG_CACHE_HOME" ]]
+    then
+    	        export XDG_CACHE_HOME="$HOME/.cache/"
+    fi
+    
+    if [[ -d "$XDG_CONFIG_HOME/zsh" ]]
+    then
+    	        export ZDOTDIR="$XDG_CONFIG_HOME/zsh/"
+    fi
+
+Change default shell
+
+    chsh -s /usr/bin/zsh
 
 ### Keyboard in X
 
@@ -307,6 +338,40 @@ Config keymap for Xorg
 
     # localectl --no-convert set-x11-keymap be
 
+### Get sound to work
+
+Install alsa-utils
+
+    $ sudo pacman -S alsa-utils
+
+Install pulseaudio and a front-end
+
+    $ sudo pacman -S pulseaudio pulseaudio-alsa pulsemixer
+
+Reboot
+
+### Activate fingerprint auth
+
+Install fprintd
+
+    $ sudo pacman -S fprintd
+
+Edit the auth files
+
+    $ sudo vim /etc/pam.d/system-local-login
+    ----------------------------------------
+    auth      sufficient pam_fprintd.so
+    auth      include   system-login
+    ...
+    $ sudo vim /etc/pam.d/system-local-login
+    ----------------------------------------
+    auth      sufficient pam_fprintd.so
+    auth      include   system-auth
+    ...
+
+Enroll the prints
+
+    $ fprintd-enroll
 
 ## Expanding lvm on multiple disks
 

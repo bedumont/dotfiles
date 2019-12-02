@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =5
+let g:netrw_dirhist_5='/home/ben/.myconfig/modules'
+let g:netrw_dirhist_4='/home/ben/.config/gnupg'
+let g:netrw_dirhist_3='/home/ben/themes/Zsh'
+let g:netrw_dirhist_2='/home/ben/.myconfig'
+let g:netrw_dirhist_1='/usr/share/X11/xorg.conf.d'

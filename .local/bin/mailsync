@@ -23,9 +23,9 @@ fi
 
 # Run mbsync. You can feed this script different settings.
 if [ $# -eq 0 ]; then
-    mbsync -a
+    mbsync -c "$XDG_CONFIG_HOME"/isync/mbsyncrc -a
 else
-    mbsync "$@"
+    mbsync -c "$XDG_CONFIG_HOME"/isync/mbsyncrc "$@"
 fi
 
 

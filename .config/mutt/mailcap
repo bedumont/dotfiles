@@ -1,0 +1,5 @@
+application/msword; xdg-open '%s'
+application/vnd.openxmlformats-officedocument.wordprocessingml.document; libreoffice '%s'
+image/jpeg; xdg-open '%s'
+application/pdf; xdg-open '%s'
+text/html; qutebrowser %s; needsterminal; nametemplate=%s.html

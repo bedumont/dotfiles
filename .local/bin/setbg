@@ -1,0 +1,15 @@
+#!/usr/bin/sh
+
+# Thanks Luke Smith
+
+bg_path=$HOME/pictures/wallpapers/
+
+if [ "$1" = "-r" ]; then
+    bg=$(ls "$bg_path" | sort -R | tail -1)
+    cp "$bg_path"/"$bg" "$XDG_CONFIG_HOME"/wall.png
+    notify-send -i "$HOME/.config/wall.png" "Wallpaper changed"
+elif [ ! -z "$1" ]; then
+    cp "$1" ~/.config/wall.png
+    notify-send -i "$HOME/.config/wall.png" "Wallpaper changed"
+fi
+xwallpaper --zoom "$XDG_CONFIG_HOME"/wall.png

@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# TODO 
+# script to add label to entry, check if label exists
+
+labels=$(cat "$BIB")
+
+[ -z "$1" ] && echo "$labels" && exit
+
+for var in "$@"; do
+    #labels=$(echo "$labels" | grep -B1 "$var")
+    labels=$(echo "$labels" | sed -n "/^.*$var.*$/,/^\}$/p;")
+done
+labels=$(echo "$labels" | grep -E -- '@|author|title')
+echo "$labels"
+#grep -B1 "label" "$BIB | grep -B1 $(printf "$@" )

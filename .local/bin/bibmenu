@@ -1,0 +1,6 @@
+#!/bin/sh
+
+path=$HOME/documents/papers
+
+paper=$(ls $path | grep "pdf" | dmenu -l 10 -i)
+[ ! -z $paper ] && zathura $path/$paper
